@@ -1,8 +1,9 @@
 /* 
 Filename:       component.js
-Student’s Name: Jiyuan Huang 
-StudentID:      301083362
-Date:           OCT 16,2020
+Project:        On Click Cleaner
+Section:        COMP 231-002
+Group:          3
+Date:           Feb 16,2021
 
 This for contact url setting.
 */
