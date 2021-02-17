@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') -%>
+<%- include('../partials/topnavc.ejs') -%>
+<div class="container"> 
+
+  
+<% if(title == 'Contact List') { %>
+  <%- include('./content/component-list.ejs') -%> 
+<% } else if(title == 'Add Contact') { %>
+  <%- include('./content/add-component.ejs') -%> 
+<% } else if(title == 'Update Contact') { %>
+  <%- include('./content/edit-component.ejs') -%> 
+<% } %> 
+
+
+</div>
+
+<%- include('../partials/endnav.ejs') -%>
+<%- include('../partials/footer.ejs') -%>
+

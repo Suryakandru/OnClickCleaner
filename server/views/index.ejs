@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') -%>
+<%- include('../partials/topnav.ejs') -%>
+    
+  
+  <% if(title == 'Home') { %>
+    <%- include('./content/index.ejs') -%> 
+  <% } else if(title == 'About') { %>
+    <%- include('./content/about.ejs') -%> 
+  <% } else if(title == 'Products') { %>
+    <%- include('./content/products.ejs') -%> 
+  <% } else if(title == 'Services') { %>
+      <%- include('./content/services.ejs') -%> 
+  <% } else if(title == 'Contact') { %>
+        <%- include('./content/contact.ejs') -%> 
+  <% } %>
+  
+  
+  
+  
+  </div>
+
+<%- include('../partials/endnav.ejs') -%>
+<%- include('../partials/footer.ejs') -%>
+
