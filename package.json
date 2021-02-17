@@ -2,7 +2,7 @@
   "name": "OnClickCleaner",
   "version": "1.0.0",
   "description": "",
-  //"main": "index.js",
+ 
   "scripts": {
     "start": "node ./index.js"
   },
@@ -13,10 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Suryakandru/OnClickCleaner/issues"
-  },
-  //"homepage": "https://github.com/Suryakandru/OnClickCleaner#readme"
+ 
   
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.0",
