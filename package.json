@@ -1,8 +1,7 @@
 {
   "name": "OnClickCleaner",
   "version": "1.0.0",
-  "description": "",
- 
+  "description": "", 
   "scripts": {
     "start": "node ./index.js"
   },
@@ -13,8 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
- 
-  
+   
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.0",
     "bootstrap": "^3.4.1",
