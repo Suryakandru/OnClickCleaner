@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -17,4 +17,21 @@
     "url": "https://github.com/Suryakandru/OnClickCleaner/issues"
   },
   "homepage": "https://github.com/Suryakandru/OnClickCleaner#readme"
+  
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.0",
+    "bootstrap": "^3.4.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "font-awesome": "^4.7.0",
+    "http-errors": "~1.6.3",
+    "jquery": "^3.5.1",
+    "mongoose": "^5.10.8",
+    "morgan": "~1.9.1",
+    "nodeman": "^1.1.2",
+    "popper.js": "^1.16.1"
+  }
 }
