@@ -6,6 +6,10 @@ const compress = require('compression');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+
+
 
 // Define the Express configuration method
 module.exports = function() {
@@ -24,11 +28,7 @@ module.exports = function() {
 		extended: true
 	}));
 	app.use(bodyParser.json());
-    app.use(methodOverride());
-    //handle the use of PUT or DELETE methods
-    //override with POST having ?_method=DELETE or
-    // ?_method=PUT
-    app.use(methodOverride('_method'));
+	app.use(methodOverride());
 
 	// Configure the 'session' middleware
 	app.use(session({
@@ -41,8 +41,14 @@ module.exports = function() {
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
 
+	app.use(flash());
+
+	app.use(passport.initialize()); //bootstrapping the Passport module
+	app.use(passport.session()); //keep track of your user's session
+
 	// Load the routing files
 	require('../app/routes/index.server.routes.js')(app);
+	require('../app/routes/users.server.routes.js')(app);
 
 	// Configure static file serving
 	app.use(express.static('./public'));
