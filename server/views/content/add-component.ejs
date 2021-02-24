@@ -1,0 +1,37 @@
+<div class="row justify-content-md-center" >
+    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
+      <h4 class="display-4" ><%= title %></h4>
+      <hr class="my-4">   
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+        <form method="POST">
+        <div class="form-group row">
+            <label for="cname" class="col-sm-3 col-form-label">Contact Name</label>
+            <div class="col-sm-8"><input type="text" class="form-control" id="cname" aria-describedby="cname"
+            name="cname" placeholder="Enter Contact Name" required> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cnumber" class="col-sm-3 col-form-label">Contact Number</label>
+            <div class="col-sm-8"><input type="text" class="form-control" id="cnumber" aria-describedby="description"
+            name="cnumber" placeholder="Enter Phone Number" required></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cemail" class="col-sm-3 col-form-label">Email Address</label>
+            <div class="col-sm-8"><input type="text" class="form-control" id="cemail" aria-describedby="cemail"
+            name="cemail" placeholder="Enter Contact Email" required> 
+           </div>
+        </div>
+        <div class="row justify-content-md-center" >
+            <button type="submit" class="btn btn-primary btn-ls"><i class="fas fa-plus-circle"></i> Add Contact</button>
+            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+            <a href="/component-list" class="btn btn-warning btn-ls"><i class="fas fa-undo"></i> Cancel</a>
+        </div>
+        </fomr>
+    
+    </div>
+</div>
+    
