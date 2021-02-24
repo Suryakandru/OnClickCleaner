@@ -6,14 +6,50 @@
     <title>
         <%= title %>
     </title>
-    <link rel="stylesheet" type="text/css" href="css/display.css" />
-
 </head>
 
 <body>
-    <% if ( userFullName ) { %>
-        <h2>Hello <%=userFullName%>
-        </h2>
+    <% if ( userFullName !=null && userCategory == 'Customer') { %>
+        <h2>Hello <%=userFullName%></h2>
+        <form action="/thanks" method="post">
+        <div class="outer_container">
+            <h2> Provide service requirement</h2>
+            <h4>Location Details</h4>
+            <div class="container">
+                <label>Address Line - 1:</label>
+                <input type="text" class ="fields" name="addressLine1" />
+            </div>
+            <div class="container">
+                <label>Address Line - 2:</label>
+                <input type="text" class ="fields" name="addressLine2" />
+            </div>
+            <div class="container">
+                <label>City:</label>
+                <input type="text" class ="fields" name="city" />
+            </div>
+            <select name="province">
+                <option value="ON">ON</option>
+                <option value="BC">BC</option>
+                <option value="AB">AB</option>
+              </select> 
+            <div class="container">
+                <label>Postal Code:</label>
+                <input type="text" class ="fields" name="postalCode" />
+            </div>
+            <h4>Service Details</h4>
+            <select name="serviceType">
+                <option value="deepCleaning">Deep Cleaning</option>
+                <option value="lightCleaning">Light Cleaning</option>
+              </select> 
+            <div class="container">
+                <label>Service Date:</label>
+                <input type="text" class ="fields" name="serviceDate" />
+            </div>
+            <div class="container">
+                <button type="submit" class="form-field-no-caption">Submit Request</button>
+            </div>
+        </div>
+    </form>   
         <a href="/signout">Sign out</a>
     <% } else { %>
             <a href="/signup">Signup</a>
