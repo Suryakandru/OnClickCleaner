@@ -7,6 +7,7 @@ Let us start
 please send you github usernames to get a invitation
 
 https://www.gitkraken.com/download - link to download git kraken and clone the code using the github https link. and use gitkraken to commit ,push,pull your changes.
+Please do watch this video https://www.youtube.com/watch?v=ub9GfRziCtU
 
 only 3 people can be reviewers 
 
