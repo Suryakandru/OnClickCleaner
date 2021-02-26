@@ -5,7 +5,10 @@ const Schema = mongoose.Schema;
 
 // Define a new 'UserSchema'
 const UserSchema = new Schema({
-	category: String,
+	category: {
+		type: String,
+		required: 'User category is required'
+	},
 	firstName: String,
 	lastName: String,
 	email: {

@@ -17,6 +17,10 @@ const ServiceSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    status: {
+        type: String,
+        default: 'Requested'
+    },
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'User'

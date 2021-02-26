@@ -9,10 +9,11 @@
 </head>
 <body>
   	<!-- Display flash messages  -->
-	<% for(var i in messages) { %>
-	   <div class="flash"><%= messages[i] %></div>
-	<% } %>
-
+      <div class="alert alert-warning text-center"> 
+        <% for(var i in messages) { %>
+            <div class="flash"><%= messages[i] %></div>
+         <% } %>
+      </div>
 	<!-- Render the signin form  -->
     <form action="/signin" method="post">
         <div class="container" style="width: 400px;">
@@ -26,6 +27,5 @@
         </div>
         <!-- Render the OAuth authentication links  -->
     </form>
-
 </body>
 </html>
