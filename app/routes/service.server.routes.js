@@ -10,4 +10,6 @@ module.exports = function (app) {
 
     app.route('/bookService').get(service.customerByUserName);
     app.post('/thanks', service.completeBookingService);
+    app.route('/allBookings').get(service.bookingsByCustomer);
+    app.route('/delete').delete(service.deleteByUserName);
 };

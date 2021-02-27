@@ -8,11 +8,11 @@
 </head>
 <body>
 	<!-- Load the static image file  -->
-	<form action="/thanks" method="post">
         <div class="container">
+            <h4>User name: <%= username %></h4>
             <h4><%= userFirstName %>, your cleaning request for the location of <%= address %> on <%= date %> has been recorded</h4>
             <h5>Status: <%= status %></h5>
        </div>
-</form>
+       <div><a href="/allBookings"><h3>See all of your bookings</h3></a></div>
 </body>
 </html>
