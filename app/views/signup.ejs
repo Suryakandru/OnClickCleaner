@@ -9,10 +9,11 @@
 </head>
 <body>
   	<!-- Display flash messages  -->
-	<% for(var i in badmessage) { %>
-	   <div class="flash"><%= badmessage[i] %></div>
-	<% } %>
-
+      <div class="alert alert-warning text-center">
+        <% for(var i in badmessage) { %>
+            <div class="flash"><%= badmessage[i] %></div>
+         <% } %>
+      </div>
 	<!-- Render the signup form  -->
     <div class="container" style="width: 400px;">
         <form action="/signup" method="post">

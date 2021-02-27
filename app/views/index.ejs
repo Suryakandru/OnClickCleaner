@@ -11,55 +11,17 @@
 <body>
     <% if ( userFullName !=null && userCategory == 'Customer') { %>
         <div class="container text-center">
+            <h6 hidden>User id: <%=username%></h6>
             <h2>Hello <%=userFullName%></h2><br>
-            <h2>Book a cleaning service now!</h2>
-        </div>
-            <div class="container" style="width: 400px;">
-                <form class="form-signin" action="/thanks" method="post">
-                        <h4>Location Details</h4>
-    
-                            <label for="addressLine1">Address Line - 1:</label>
-                            <input class="form-control" type="text" class ="fields" name="addressLine1" />
-                            <br>
-                            <label for="addressLine2">Address Line - 2:</label>
-                            <input class="form-control" type="text" class ="fields" name="addressLine2" />
-                            <br>  
-                            <label for="city">City:</label>
-                            <input class="form-control" type="text" class ="fields" name="city" />
-                            <br>
-                        <label for="province">Province:</label>
-                        <select name="province">
-                            <option value="ON">ON</option>
-                            <option value="BC">BC</option>
-                            <option value="AB">AB</option>
-                        </select> 
-                        <br>
-                            <label for="postalCode">Postal Code:</label>
-                            <input class="form-control" type="text" class ="fields" name="postalCode" />
-                        <br>
-                        <h4>Service Details</h4>
-                        <br>
-                        <select class="form-control" name="serviceType">
-                            <option value="deepCleaning">Deep Cleaning</option>
-                            <option value="lightCleaning">Light Cleaning</option>
-                        </select> 
-                        <br>
-                            <label for="serviceDate">Service Date:</label>
-                            <input class="form-control" type="text" class ="fields" name="serviceDate" />
-                        <br>
-                        <button type="submit" class="btn btn-primary">Book Service</button>   
-                </form>   
-                <div class="text-center">
-                    <a href="/signout">Sign out</a>
-                </div>
-            </div>       
+            <h2><a href="/bookService">Book a cleaning service now!</a></h2>
+        </div>  
+        <div class="text-center">
+            <a href="/signout">Sign out</a>
+        </div>  
         <% } else { %>
             <h2>New to OnCLickCleaner? <a href="/signup">Signup</a></h2><p></p>
             <h2>Already have an account? <a href="/signin">Signin</a></a></h2>               
-        <% } %>
-        
-        <br>
-        
+        <% } %>       
+        <br>        
 </body>
-
 </html>
