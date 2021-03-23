@@ -19,9 +19,19 @@
         <div class="text-center">
             <a href="/signout">Sign out</a>
         </div>  
-        <% } else { %>
-            <h2>New to OnCLickCleaner? <a href="/signup">Signup</a></h2><p></p>
-            <h2>Already have an account? <a href="/signin">Signin</a></a></h2>               
+        <% } 
+        else if (userFullName !=null && userCategory == 'Cleaner'){ %>
+            <div class="container text-center">
+                <h2><a href="">Create/complete cleaner profile</a></h2><p></p>
+                <h2><a href="/availableBookings">Check out available cleaning tasks</a></h2>
+                <a href="/signout">Sign out</a>
+            </div>            
+        <% }
+        else { %>
+            <div class="container text-center">
+                <h2>New to OnCLickCleaner? <a href="/signup">Signup</a></h2><p></p>
+                <h2>Already have an account? <a href="/signin">Signin</a></a></h2>   
+            </div>            
         <% } %>       
         <br>        
 </body>

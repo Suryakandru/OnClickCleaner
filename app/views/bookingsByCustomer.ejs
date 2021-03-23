@@ -53,7 +53,7 @@
                         <td><input readonly class="border-0" type="text" name="status" 
                           value="<%= bookings.status %>" />
                         </td>
-                        <td><input class="btn btn-danger" type="submit" formaction="/allBookings/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
+                        <td><input class="btn btn-danger" type="submit" formaction="/bookingsByCustomer/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
                         <td><input class="btn btn-success" type="submit" formaction="/editBooking/<%= bookings._id %>" value="Edit" /></td>
                       </tr>                       
                     </tbody>             
