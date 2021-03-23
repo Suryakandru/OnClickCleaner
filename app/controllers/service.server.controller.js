@@ -87,7 +87,7 @@ exports.completeBookingService = function (req, res) {
                             userFullName: userFullName,
                             bookings: bookings,
                         });
-                        //console.log("Booking details " + bookings);
+                        console.log("Booking details " + bookings);
                     });
             });
     };
@@ -148,3 +148,5 @@ exports.completeBookingService = function (req, res) {
         });   
         res.redirect('/allBookings');         
     };
+
+    

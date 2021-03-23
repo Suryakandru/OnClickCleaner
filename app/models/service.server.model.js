@@ -24,6 +24,10 @@ const ServiceSchema = new Schema({
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    cleaner: {
+        type: String,
+        default: 'Waiting for cleaner'
     }
 });
 //

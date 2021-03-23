@@ -7,5 +7,6 @@ exports.render = function (req, res) {
 		username: req.user? req.user.username : '',
 	});
 	session.userName = req.user.username;
-	console.log('Session User Name: '+session.userName);
+	session.userFullName = req.user.fullName;
+	console.log('Session User Full Name: '+session.userFullName);
 };

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<!-- Use the 'title' property to render a title element  -->
-	<h1 class="text-center"> List of all bookings by <%= userFullName %></h1><br>
+	<h1 class="text-center"> Bookings Accepted by <%= userFullName %></h1><br>
   <form method="POST" action="/editBooking">
     <div class="row justify-content-center">
       <div class="row justify-content-center">
@@ -16,13 +16,12 @@
             <thead>
               <tr>
                 <th hidden scope="col">Id</th>
+                <th scope="col">Customer Name</th>
                 <th scope="col">Address</th>
                 <th scope="col">Service Type</th>
                 <th scope="col">Service Date</th>
                 <th scope="col">Date Created</th>
                 <th scope="col">Current Status</th>
-                <th scope="col">Cleaner</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
             </thead>          
@@ -31,6 +30,9 @@
                       <tr>
                         <td hidden><input readonly class="border-0" type="text" name="bookingId" 
                           value="<%= bookings._id %>" />
+                        </td>
+                        <td><input readonly class="border-0" type="text" name="bookingId" 
+                          value="<%= bookings.customer.firstName +' '+ bookings.customer.lastName %>" />
                         </td>
                         <td><textarea readonly class="border-0" rows="3" cols="40" wrap="soft" name="address" ><%= bookings.addressLine1 + ", " + 
                           bookings.addressLine2 + ", " +  
@@ -51,28 +53,21 @@
                         <td><input readonly class="border-0" type="text" name="status" 
                           value="<%= bookings.status %>" />
                         </td>
-                        <td><input readonly class="border-0" type="text" name="status" 
-                          value="<%= bookings.cleaner %>" />
-                        </td>
-                        <% if(bookings.status == 'Requested'){ %>
-                          <td><input class="btn btn-success" type="submit" formaction="/editBooking/<%= bookings._id %>" value="Edit" /></td>
-                          <td><input class="btn btn-danger" type="submit" formaction="/bookingsByCustomer/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
+                        <% if(bookings.status == 'Accepted'){ %>
+                          <td><input class="btn btn-success" type="submit" formaction="/acceptedBookings/<%= bookings._id %>?_method=PUT" method="POST" value="Completed" /></td>
                           <% } 
 
                         else{ %>
-                          <td><input class="btn btn-secondary" type="submit" disabled value="Edit" /></td>
-                          <td><input class="btn btn-secondary" type="submit" disabled value="Delete" /></td>
+                          <td><input class="btn btn-secondary" type="submit" disabled value="Completed" /></td>
                           <% } %>   
                       </tr>                       
                     </tbody>             
               <% })%>     
           </table>
-        </div>
-          
+        </div>        
       </div>
   </div>
   </form>    
-<br>
 <div class="text-center">
   <a href="http://localhost:3000"> Main Page</a>
 </div>  
