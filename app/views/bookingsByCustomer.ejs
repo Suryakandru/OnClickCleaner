@@ -21,6 +21,7 @@
                 <th scope="col">Service Date</th>
                 <th scope="col">Date Created</th>
                 <th scope="col">Current Status</th>
+                <th scope="col">Cleaner</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
@@ -53,14 +54,23 @@
                         <td><input readonly class="border-0" type="text" name="status" 
                           value="<%= bookings.status %>" />
                         </td>
-                        <td><input class="btn btn-danger" type="submit" formaction="/bookingsByCustomer/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
-                        <td><input class="btn btn-success" type="submit" formaction="/editBooking/<%= bookings._id %>" value="Edit" /></td>
+                        <td><input readonly class="border-0" type="text" name="cleaner" 
+                          value="<%= bookings.cleaner %>" />
+                        </td> 
+                        <% if(bookings.status == 'Requested'){ %>
+                          <td><input class="btn btn-success" type="submit" formaction="/editBooking/<%= bookings._id %>" value="Edit" /></td>
+                          <td><input class="btn btn-danger" type="submit" formaction="/bookingsByCustomer/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
+                          <% } 
+
+                        else{ %>
+                          <td><input class="btn btn-secondary" type="submit" disabled value="Edit" /></td>
+                          <td><input class="btn btn-secondary" type="submit" disabled value="Delete" /></td>
+                          <% } %>   
                       </tr>                       
                     </tbody>             
               <% })%>     
           </table>
-        </div>
-          
+        </div>         
       </div>
   </div>
   </form>    

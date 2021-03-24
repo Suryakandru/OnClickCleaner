@@ -50,6 +50,7 @@ module.exports = function() {
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
 	require('../app/routes/service.server.routes.js')(app);
+	require('../app/routes/cleaner.server.routes.js')(app);
 
 
 	// Configure static file serving

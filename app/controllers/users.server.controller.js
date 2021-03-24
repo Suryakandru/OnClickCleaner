@@ -1,6 +1,7 @@
 // Load the module dependencies
 const User = require('mongoose').model('User');
 const passport = require('passport');
+const session = require('express-session');
 
 // Create a new error handling controller method
 const getErrorMessage = function(err) {
