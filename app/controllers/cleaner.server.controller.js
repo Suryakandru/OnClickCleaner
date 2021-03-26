@@ -45,8 +45,7 @@ exports.update = function (req, res, next) {
     var cleanername = session.userFullName;
     var username = session.userName;
     console.log(username);
-    req.cleaner =
-    User.findOne({ username: username }, (err, user) => {
+    req.cleaner = User.findOne({ username: username }, (err, user) => {
         if (err) { return getErrorMessage(err); }
         req.id = user._id;
         userFullName = user.fullName;
@@ -55,14 +54,26 @@ exports.update = function (req, res, next) {
     });
     Service.findByIdAndUpdate(
         { _id: req.service._id },
-        { status: "Accepted", cleaner:  cleanername },
+        { status: "Accepted", cleaner:  cleanername, },
+        function(err, result) {
+          if (err) {
+            res.send(err);
+          } else {
+            console.log("Update in action");
+            //res.redirect('/acceptedBookings');
+            console.log(req.service);
+          }
+        }
+      );
+      User.findByIdAndUpdate(
+        { _id: req.service.customer._id },
+        { notification: "Cleaning request accepted by "+ cleanername },
         function(err, result) {
           if (err) {
             res.send(err);
           } else {
             console.log("Update in action");
             res.redirect('/acceptedBookings');
-            console.log(req.service);
           }
         }
       );
@@ -82,11 +93,6 @@ exports.update = function (req, res, next) {
                         cleaner: session.userFullName
                     }, (err, bookings) => {
                         if (err) { return getErrorMessage(err); }
-                        // res.render('acceptedBookings', {
-                        //     title: 'Accepted Tasks',
-                        //     userFullName: session.userFullName,
-                        //     bookings: bookings,
-                        // });
                     }).populate('customer').exec((err, bookings)=>{
                         //console.log(`Populated: `, customers)
                         res.render(
@@ -103,14 +109,6 @@ exports.update = function (req, res, next) {
         var cleanername = session.userFullName;
         var username = session.userName;
         console.log(username);
-        // req.cleaner =
-        // User.findOne({ username: username }, (err, user) => {
-        //     if (err) { return getErrorMessage(err); }
-        //     req.id = user._id;
-        //     userFullName = user.fullName;
-        //     cleanername = userFullName;
-        //     //console.log(req.id);
-        // });
         Service.findByIdAndUpdate(
             { _id: req.service._id },
             { status: "Completed"},
@@ -119,9 +117,41 @@ exports.update = function (req, res, next) {
                 res.send(err);
               } else {
                 console.log("Update in action");
+                //res.redirect('/acceptedBookings');
+                //console.log(req.service);
+              }
+            }
+          );
+          User.findByIdAndUpdate(
+            { _id: req.service.customer._id },
+            { notification: "Cleaning request completed by "+ cleanername },
+            function(err, result) {
+              if (err) {
+                res.send(err);
+              } else {
+                console.log("Completion in action");
                 res.redirect('/acceptedBookings');
-                console.log(req.service);
               }
             }
           );
     };
+
+    exports.allReviews = function (req, res, next) {
+      console.log("In customer feedback page. session user fullname: " +session.userFullName);
+      Service.find(
+        {cleaner: session.userFullName, review:{$ne:null}},
+        function(err, bookings){
+        if(err){
+            return next(err);        
+        }else{
+            //console.log("Available bookings: "+bookings)
+        }
+    }).populate('customer').exec((err, services)=>{
+        //console.log(`Populated: `, customers)
+        res.render(
+            "allReviews", {
+                title: 'Customer Feedbacks',
+                services: services, 
+        });
+    })
+  };

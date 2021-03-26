@@ -28,6 +28,12 @@ const ServiceSchema = new Schema({
     cleaner: {
         type: String,
         default: 'Waiting for cleaner'
+    },
+    review:{
+        rating: Number,
+        comment: String,
+        recommend: Boolean,
+        default: ''
     }
 });
 //

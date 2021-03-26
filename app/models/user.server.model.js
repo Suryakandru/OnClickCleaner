@@ -33,6 +33,9 @@ const UserSchema = new Schema({
 			'Password should be longer'
 		]
 	},	
+	notification:{
+		type: String
+	},
 	salt: { //to hash the password
 		type: String
 	},

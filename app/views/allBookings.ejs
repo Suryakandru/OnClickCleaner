@@ -46,7 +46,7 @@
                           value="<%= bookings.serviceDate %>" />
                         </td>
                         <td><input readonly class="border-0" type="text" name="date" 
-                          value="<%= bookings.date.toLocaleDateString() %>" />
+                          value="<%= bookings.date %>" />
                         </td>
                         <td><input readonly class="border-0" type="text" name="status" 
                           value="<%= bookings.status %>" />
@@ -58,17 +58,21 @@
                           <td><input class="btn btn-success" type="submit" formaction="/editBooking/<%= bookings._id %>" value="Edit" /></td>
                           <td><input class="btn btn-danger" type="submit" formaction="/allBookings/<%= bookings._id %>?_method=DELETE" value="Delete" /></td>
                           <% } 
-
-                        else{ %>
-                          <td><input class="btn btn-secondary" type="submit" disabled value="Edit" /></td>
-                          <td><input class="btn btn-secondary" type="submit" disabled value="Delete" /></td>
-                          <% } %>   
+                        else if(bookings.status == 'Accepted'){ %>
+                            <td><input class="btn btn-warning" type="submit" disabled value="Edit" /></td>
+                            <td><input class="btn btn-warning" type="submit" disabled value="Delete" /></td>
+                            <% }  
+                        else if(bookings.status == 'Completed' && bookings.review == "{}"){ %>
+                          <td><input class="btn btn-warning" type="submit" formaction="/addReview/<%= bookings._id %>" value="Review" /></td>
+                          <% } 
+                        else {%>
+                          <td><input class="btn btn-warning" type="submit" disabled value="Review" /></td>
+                          <%}%>   
                       </tr>                       
                     </tbody>             
               <% })%>     
           </table>
-        </div>
-          
+        </div>         
       </div>
   </div>
   </form>    
