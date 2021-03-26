@@ -40,6 +40,7 @@ module.exports = function() {
 	// Set the application view engine and 'views' folder
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
+	app.engine('html', require('ejs').renderFile);
 
 	app.use(flash());
 

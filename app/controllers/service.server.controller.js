@@ -172,3 +172,8 @@ exports.completeBookingService = function (req, res) {
     };
 
     
+
+    exports.aboutUs = function (req, res, next){
+        
+            res.render('aboutUs', { title: 'About US'} );
+    };
