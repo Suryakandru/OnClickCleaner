@@ -52,7 +52,7 @@ exports.completeBookingService = function (req, res) {
              // Use the 'response' object to send a JSON response
              res.render('thanks', {
                  title: 'Thank You',  
-                 userFirstName : session.userFirstName,
+                 userFullName : session.userFullName,
                  address: req.body.addressLine1 + ", " + req.body.addressLine2
                  + ", " + req.body.city + ", " + req.body.province + ", " + req.body.postalCode,
                 date: req.body.serviceDate,
@@ -115,17 +115,15 @@ exports.completeBookingService = function (req, res) {
     };
 
     exports.update = function (req, res, next) {
-        req.service=req.service //read the user from request's body
-        // Use the 'User' static 'findByIdAndUpdate' method to update a specific user
+        req.service=req.service //read the service from request's body
+        console.log("Update Booking: "+ req.service._id);
+        //Use the 'User' static 'findByIdAndUpdate' method to update a specific user
         Service.findByIdAndUpdate(req.service._id, req.body, (err, service) => {
             if (err) {
                 // Call the next middleware with an error message
                 return next(err);
-            } else {
-                //res.json(survey);
-                console.log("Update in action");
+            } else {            
                 res.redirect('/allBookings')
-                //res.json(service.serviceDate);
             }
         })
     };
@@ -147,6 +145,30 @@ exports.completeBookingService = function (req, res) {
             if (err) throw err;    
         });   
         res.redirect('/allBookings');         
+    };
+
+    //Render review page
+    exports.reviewByServiceId = function (req, res, next){
+        req.service = session.service;
+            var jsonService = JSON.parse(JSON.stringify(req.service));
+            res.render('addReview', { title: 'Add Review', booking: jsonService} );
+    };
+    //Add a review
+    exports.addReview = function (req, res, next) {
+        req.service=req.service //read the service from request's body
+        console.log("Adding review: "+ req.service);
+        Service.findByIdAndUpdate(
+            { _id: req.service._id },
+            { review: req.body },
+            function(err, result) {
+              if (err) {
+                res.send(err);
+              } else {
+                console.log("Adding a review"+ req.service);
+                res.redirect('/allBookings');
+              }
+            }
+          );
     };
 
     

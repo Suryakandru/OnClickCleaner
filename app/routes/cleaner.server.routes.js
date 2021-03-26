@@ -6,5 +6,6 @@ module.exports = function (app) {
     app.route('/availableBookings/:_id').get(service.read).put(cleaner.update);
     app.route('/acceptedBookings/:_id').get(service.read).put(cleaner.complete);
     app.route('/availableBookings').get(cleaner.display);
+    app.route('/allReviews').get(cleaner.allReviews);
     app.param('_id', service.findServiceById);
 };

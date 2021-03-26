@@ -54,7 +54,7 @@
                           value="<%= bookings.status %>" />
                         </td>
                         <% if(bookings.status == 'Accepted'){ %>
-                          <td><input class="btn btn-success" type="submit" formaction="/acceptedBookings/<%= bookings._id %>?_method=PUT" method="POST" value="Completed" /></td>
+                          <td><input class="btn btn-success" type="submit" formaction="/acceptedBookings/<%= bookings._id %>?_method=PUT" method="POST" value="Complete Task" /></td>
                           <% } 
 
                         else{ %>
