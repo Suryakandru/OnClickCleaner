@@ -9,12 +9,12 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 
-
-
 // Define the Express configuration method
 module.exports = function() {
 	// Create a new Express application instance
 	const app = express();
+	app.use(methodOverride());
+    app.use(methodOverride('_method'));
 
 	// Use the 'NDOE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
 	if (process.env.NODE_ENV === 'development') {
@@ -28,7 +28,7 @@ module.exports = function() {
 		extended: true
 	}));
 	app.use(bodyParser.json());
-	app.use(methodOverride());
+	//app.use(methodOverride());
 
 	// Configure the 'session' middleware
 	app.use(session({
@@ -50,6 +50,7 @@ module.exports = function() {
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
 	require('../app/routes/service.server.routes.js')(app);
+	require('../app/routes/cleaner.server.routes.js')(app);
 
 
 	// Configure static file serving

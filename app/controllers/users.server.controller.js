@@ -1,6 +1,7 @@
 // Load the module dependencies
 const User = require('mongoose').model('User');
 const passport = require('passport');
+const session = require('express-session');
 
 // Create a new error handling controller method
 const getErrorMessage = function(err) {
@@ -147,4 +148,63 @@ exports.signout = function(req, res) {
 
 	// Redirect the user back to the main application page
 	res.redirect('/');
+};
+
+exports.read = function(req, res) {
+	//var updatedService = req.service;
+	console.log('In-read'+ req.user);
+	//res.json(req.user);
+	var jsonUser = JSON.parse(JSON.stringify(req.user));
+	console.log("In editProfile: "+ jsonUser);
+	res.render('editProfile', { title: 'Edit Profile', user: jsonUser, badmessage: req.flash('error')} );
+};
+
+exports.readProfile = function(req, res) {
+	//var updatedService = req.service;
+	console.log('In-read'+ req.user);
+	//res.json(req.user);
+	var jsonUser = JSON.parse(JSON.stringify(req.user));
+	res.render('userProfile', { title: 'User Profile', user: jsonUser} );
+};
+
+exports.findUserById = function (req, res, next, _id) {
+	User.findOne({
+		_id: _id 
+	}, (err, user) => {
+		if (err) {			
+			return next(err);
+		} else {
+			//console.log(service)
+			req.user = user;
+			session.user = user;
+			next();
+		}
+	});
+};
+
+exports.userByUserId = function (req, res, next){
+	req.user = session.user;
+		var jsonUser = JSON.parse(JSON.stringify(req.service));
+		const message = getErrorMessage(err);
+                console.log(err)
+				// save the error in flash
+				req.flash('error', message); //save the error into flash memory
+		res.render('editProfile', { title: 'Edit Profile', user: jsonUser} );
+		console.log("In editProfile");
+};
+
+exports.update = function (req, res, next) {
+	req.user=req.user //read the user from request's body
+	// Use the 'User' static 'findByIdAndUpdate' method to update a specific user
+	User.findByIdAndUpdate(req.user._id, req.body, (err, service) => {
+		if (err) {
+			// Call the next middleware with an error message
+			return next(err);
+		} else {
+			//res.json(survey);
+			console.log("Update in action");
+			res.redirect('/')
+			//res.json(service.serviceDate);
+		}
+	})
 };
