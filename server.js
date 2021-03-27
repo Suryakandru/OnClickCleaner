@@ -6,7 +6,6 @@ const configureMongoose = require('./config/mongoose');
 const configureExpress = require('./config/express');
 const configurePassport = require('./config/passport');
 
-
 //const mongoose = require('mongoose');
 
 

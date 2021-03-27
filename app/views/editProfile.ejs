@@ -17,15 +17,8 @@
         <form action="/editProfile/<%= user._id %>?_method=PUT" method="POST"" method="post">
                 <h2> Edit Profile</h2>
                     <label for="category">User Category:</label>
-                    <% if ( user.category == 'Customer') { %>
-                        <input name="category" type="radio" value ="Cleaner" name="Cleaner">Cleaner</input>
-                        <input name="category" type="radio" value ="Customer" name="Customer" checked="checked">Customer<br />
-                    <% } 
-                    else { %>
-                        <input name="category" type="radio" value ="Cleaner" name="Cleaner" checked="checked">Cleaner</input>
-                        <input name="category" type="radio" value ="Customer" name="Customer">Customer<br />
-                    <% } %>   
-                    
+                    <input name="category" type="radio" value ="Cleaner" name="Cleaner">Cleaner</input>
+                    <input name="category" type="radio" value ="Customer" name="Customer">Customer<br />
                     <label for="firstName">First Name:</label>
                     <input class="form-control" type="text" class ="fields" name="firstName" value="<%= user.firstName%>" />
                     <label for="lastName">Last Name:</label>
