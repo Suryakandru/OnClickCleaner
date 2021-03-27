@@ -21,6 +21,4 @@ module.exports = function (app) {
     app.route('/addReview/review/:_id').get(service.read).put(service.addReview);
 
     app.param('_id', service.findServiceById);
-
-    app.route('/aboutUs').get(service.aboutUs);
 };
