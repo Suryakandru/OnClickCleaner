@@ -8,21 +8,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
-const AdminBro = require('admin-bro');
-const AdminBroExpressjs = require('admin-bro-expressjs');
-
-
-// We have to tell AdminBro that we will manage mongoose resources with it
-AdminBro.registerAdapter(require('admin-bro-mongoose'));
-
-
 
 // Define the Express configuration method
-AdminBro.registerAdapter(require('admin-bro-mongoose'))
-
-
-
-
 module.exports = function() {
 	// Create a new Express application instance
 	const app = express();
