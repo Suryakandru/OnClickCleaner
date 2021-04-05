@@ -7,6 +7,9 @@ const configureExpress = require('./config/express');
 const configurePassport = require('./config/passport');
 
 
+//const mongoose = require('mongoose');
+
+
 // Create a new Mongoose connection instance
 const db = configureMongoose();
 
@@ -15,7 +18,8 @@ const app = configureExpress();
 
 const passport = configurePassport();
 
-
+//mongoose.connect('mongodb+srv://admin:admin@cluster0.j7y8s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+//,{ useUnifiedTopology: true }, ()=> console.log("Connected to cloude DB!"));
 // Use the Express application instance to listen to the '3000' port
 app.listen(3000);
 

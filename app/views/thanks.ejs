@@ -7,12 +7,39 @@
 
 </head>
 <body>
-	<!-- Load the static image file  -->
-        <div class="container">
-            <h4>User name: <%= username %></h4>
-            <h4><%= userFirstName %>, your cleaning request for the location of <%= address %> on <%= date %> has been recorded</h4>
-            <h5>Status: <%= status %></h5>
-       </div>
-       <div><a href="/allBookings"><h3>See all of your bookings</h3></a></div>
+       <div class="container">
+        <div row justify-content-center>
+            <h3 style="color:darkmagenta">Thank you for your cleaning request. A cleaner will be assigned for this task soon!</h3><br>
+            <div class="col-auto">
+                <table class="table table-dark">
+                    <tr>
+                        <td><b>Customer Name</b></td>
+                        <td><%= userFullName%></td>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <td><%= address%></td>
+                    </tr>
+                    <tr>
+                        <td><b>Date</b></td>
+                        <td><%= date%></td>
+                    </tr>
+                    <tr>
+                        <td><b>Current Status</b></td>
+                        <td><%= status%></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-center">
+                <a href="/allBookings">Check Your Bookings</a> 
+            </div>
+        </div>  
+        <div class="text-center">
+            <a href="http://localhost:3000"> Home Page</a>
+        </div>      
+        <div class="text-center">
+            <a href="/signout">Sign out</a>
+        </div>
+    </div>
 </body>
 </html>
