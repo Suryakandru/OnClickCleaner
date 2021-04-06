@@ -82,8 +82,8 @@ exports.completeBookingService = function (req, res) {
                     }, (err, bookings) => {
                         if (err) { return getErrorMessage(err); }
                         //res.json(comments);
-                        res.render('allBookings', {
-                            title: 'All Bookings',
+                        res.render('customerBookings', {
+                            title: 'Bookings',
                             userFullName: userFullName,
                             bookings: bookings,
                         });
