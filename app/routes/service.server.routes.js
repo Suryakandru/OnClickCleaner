@@ -14,7 +14,8 @@ module.exports = function (app) {
 
     app.route('/editBooking/:_id').get(service.findServiceById).post(service.serviceByServiceId);
 
-    app.route('/allBookings/:_id').get(service.read).put(service.update).delete(service.deleteByServiceId);
+    app.route('/customerBookings/:_id').get(service.read).put(service.update).delete(service.deleteByServiceId);
+    app.route('/admin/allBookings').get(service.AllBookings);
 
     app.route('/addReview/:_id').get(service.findServiceById).post(service.reviewByServiceId);
 

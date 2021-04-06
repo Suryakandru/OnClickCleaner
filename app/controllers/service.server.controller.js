@@ -122,8 +122,13 @@ exports.completeBookingService = function (req, res) {
             if (err) {
                 // Call the next middleware with an error message
                 return next(err);
-            } else {            
-                res.redirect('/allBookings')
+            } else {
+                if(session.userName != 'Admin'){
+                    res.redirect('/customerBookings')
+                }     
+                else{
+                    res.redirect('/admin/allBookings')
+                }                      
             }
         })
     };
@@ -143,8 +148,13 @@ exports.completeBookingService = function (req, res) {
         }, function (err, user) {
     
             if (err) throw err;    
-        });   
-        res.redirect('/allBookings');         
+        }); 
+        if(session.userName != 'Admin'){
+            res.redirect('/customerBookings'); 
+        }  
+        else{
+            res.redirect('/admin/allBookings'); 
+        }
     };
 
     //Render review page
@@ -171,9 +181,26 @@ exports.completeBookingService = function (req, res) {
           );
     };
 
-    
-
     exports.aboutUs = function (req, res, next){
         
             res.render('aboutUs', { title: 'About US'} );
     };
+
+    //Display list of all bookings
+    //Display list of all users
+exports.AllBookings = function (req, res, next) {
+    Service.find({}, function(err, bookings){
+        if(err){
+            return next(err);        
+        }else{
+            //console.log("Available bookings: "+bookings)
+        }
+    }).populate('customer').exec((err, bookings)=>{
+        //console.log(`Populated: `, customers)
+        res.render(
+            "allBookings", {
+                title: 'All Bookings',
+                bookings: bookings, 
+        });
+    })
+};

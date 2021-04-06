@@ -16,7 +16,7 @@
             <h2>Edit you booking!</h2>
         </div>
             <div class="container" style="width: 400px;">
-                <form class="form-signin" action="/allBookings/<%= booking._id %>?_method=PUT" method="POST">
+                <form class="form-signin" action="/customerBookings/<%= booking._id %>?_method=PUT" method="POST">
                         <h4>Location Details</h4>  
                             <label for="addressLine1">Address Line - 1:</label>
                             <input class="form-control" type="text" class ="fields" name="addressLine1" value="<%= booking.addressLine1  %>"/>
