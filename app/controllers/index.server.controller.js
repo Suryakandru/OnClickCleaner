@@ -7,11 +7,12 @@ exports.render = function (req, res) {
 		username: req.user? req.user.username : '',
 		userId: req.user? req.user._id : '',
 		notification: req.user? req.user.notification : '',
+		email: req.user? req.user.email : '',
 		messages: req.flash('error') || req.flash('info')
 	});
 	session.userName = req.user.username;
 	session.userFullName = req.user.fullName;
-	console.log('Session User Full Name: '+session.userFullName);
+	console.log('User email: '+req.user.email);
 };
 
 const getErrorMessage = function(err) {

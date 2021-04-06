@@ -42,19 +42,19 @@
                           bookings.postalCode %>
                         </textarea>
                         </td>
-                        <td><input readonly class="border-0" type="text" name="serviceType" 
+                        <td><input size="10" readonly class="border-0" type="text" name="serviceType" 
                           value="<%= bookings.serviceType %>" />
                         </td>
-                        <td><input readonly class="border-0" type="text" name="serviceDate" 
+                        <td><input size="10" readonly class="border-0" type="text" name="serviceDate" 
                           value="<%= bookings.serviceDate %>" />
                         </td>
-                        <td><input readonly class="border-0" type="text" name="date" 
+                        <td><input size="10" readonly class="border-0" type="text" name="date" 
                           value="<%= bookings.date.toLocaleDateString() %>" />
                         </td>
-                        <td><input readonly class="border-0" type="text" name="status" 
+                        <td><input size="10" readonly class="border-0" type="text" name="status" 
                           value="<%= bookings.status %>" />
                         </td>
-                        <td><input readonly class="border-0" type="text" name="cleaner" 
+                        <td><input size="10" readonly class="border-0" type="text" name="cleaner" 
                           value="<%= bookings.cleaner %>" />
                         </td> 
                         <% if(bookings.status == 'Requested'){ %>
