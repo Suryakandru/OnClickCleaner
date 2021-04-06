@@ -175,7 +175,7 @@ exports.completeBookingService = function (req, res) {
                 res.send(err);
               } else {
                 console.log("Adding a review"+ req.service);
-                res.redirect('/allBookings');
+                res.redirect('/customerBookings');
               }
             }
           );
