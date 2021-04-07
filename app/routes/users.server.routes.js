@@ -8,8 +8,14 @@ module.exports = function (app) {
         .get(users.renderSignin)
         .post(passport.authenticate('local', {
             successRedirect: '/',
-            failureRedirect: '/signin',
+            failureRedirect: '/',
             failureFlash: true
         }));
     app.get('/signout', users.signout);
+
+    app.route('/editProfile/:_id').get(users.read).put(users.update);
+    app.route('/userProfile/:_id').get(users.readProfile);
+    app.route('/admin/allUsers').get(users.AllUsers);
+    app.route('/admin/deleteUser/:_id').delete(users.deleteByUserId);
+    app.param('_id', users.findUserById);
 };
