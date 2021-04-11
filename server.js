@@ -21,7 +21,7 @@ const passport = configurePassport();
 //mongoose.connect('mongodb+srv://admin:admin@cluster0.j7y8s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 //,{ useUnifiedTopology: true }, ()=> console.log("Connected to cloude DB!"));
 // Use the Express application instance to listen to the '3000' port
-app.listen(3000);
+app.listen(process.env.PORT);
 
 // Log the server status to the console
 console.log('Server running at http://localhost:3000/');
