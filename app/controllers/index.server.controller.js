@@ -12,7 +12,7 @@ exports.render = function (req, res) {
 	});
 	session.userName = req.user?req.user.username: '';
 	session.userFullName = req.user? req.user.fullName: '';
-	console.log('User email: '+req.user? req.user.email: '');
+	//console.log('User email: '+req.user? req.user.email: '');
 };
 
 const getErrorMessage = function(err) {
