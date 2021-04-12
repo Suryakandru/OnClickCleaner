@@ -12,7 +12,7 @@ module.exports = function (app) {
             failureFlash: true
         }));
     app.get('/signout', users.signout);
-
+   // app.route('').get(users.read).put(users.update);
     app.route('/editProfile/:_id').get(users.read).put(users.update);
     app.route('/userProfile/:_id').get(users.readProfile);
     app.route('/admin/allUsers').get(users.AllUsers);
