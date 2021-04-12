@@ -10,9 +10,9 @@ exports.render = function (req, res) {
 		email: req.user? req.user.email : '',
 		messages: req.flash('error') || req.flash('info')
 	});
-	session.userName = req.user.username;
-	session.userFullName = req.user.fullName;
-	console.log('User email: '+req.user.email);
+	session.userName = req.user? req.user.username: '';
+	session.userFullName = req.user? req.user.fullName: '';
+	//console.log('User email: '+req.user? req.user.email: '');
 };
 
 const getErrorMessage = function(err) {
