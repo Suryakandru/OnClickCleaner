@@ -194,19 +194,22 @@ exports.userByUserId = function (req, res, next){
 };
 
 exports.update = function (req, res, next) {
-	req.user=req.user //read the user from request's body
-	// Use the 'User' static 'findByIdAndUpdate' method to update a specific user
-	User.findByIdAndUpdate(req.user._id, req.body, (err, service) => {
+	console.log("New password1: "+ req.user.password);
+	User.findByIdAndUpdate(req.user._id, req.body, function (err, user) {
 		if (err) {
-			// Call the next middleware with an error message
-			return next(err);
+		  return next(err);
 		} else {
-			//res.json(survey);
-			console.log("Update in action");
-			res.redirect('/')
-			//res.json(service.serviceDate);
+		  user.password = req.body.password;
+		  console.log("New password: "+ user.password);
+		  user.save(function (err, user) {
+			if (err) {
+			  res.send("Error: ", err);
+			} else {
+				res.redirect('/')
+			}
+		  })
 		}
-	})
+	  });
 };
 
 //Display list of all users
